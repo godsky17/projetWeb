@@ -1,0 +1,69 @@
+@import url("../../assets/commons.css");
+
+/* Style du conteneur du bouton */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px; /* Espacement autour du bouton */
+    outline: none;
+  }
+
+  .btn button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary); /* Couleur de fond (bleu) */
+    color: #ffffff; /* Couleur du texte (blanc) */
+    border: none; /* Pas de bordure */
+    font-size: 14px; /* Taille du texte */
+    font-weight: 600; /* Texte légèrement en gras */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointeur pour indiquer que c'est cliquable */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transitions fluides */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  }
+  
+  .btn.full{
+    width: 100%;
+    margin: 8px 0;
+  }
+  .btn.full button{
+    width: 100%;
+  }
+
+  /* Style pour le bouton par défaut */
+  .btn.small button{
+    min-width: 100px;
+    height: 31px;
+    padding: 15px 20px;
+  }
+
+  .btn.medium button {
+    min-width: 139px;
+    height: 41px;
+    padding: 15px 46px;
+  }
+  .btn.large button {
+    min-width: 156px;
+    height: 51px;
+    padding: 15px 56px;
+  }
+  
+  /* Effet au survol (hover) */
+  .btn button:hover  {
+    background-color: var(--color-secondary); /* Couleur plus foncée au survol */
+  }
+  
+  /* Effet au clic (active) */
+  .btn.small button:active {
+    background-color: #004494; /* Couleur encore plus foncée au clic */
+    transform: translateY(0); /* Ramener à la position initiale */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Réduction de l'ombre */
+  }
+
+  .btn.diseable button{
+    background-color: #E5E7E6; /* Couleur encore plus foncée au clic */
+    color: var(--color-black);
+    cursor: not-allowed;
+  }

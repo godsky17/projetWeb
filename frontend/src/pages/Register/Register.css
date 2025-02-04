@@ -1,0 +1,10 @@
+.register__wrapper{
+    display: flex;
+    gap: 20px;
+    align-items: start;
+    justify-content: space-around;
+}
+
+.register__wrapper div{
+    width: 50%;
+}

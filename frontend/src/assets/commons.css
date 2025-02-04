@@ -1,0 +1,59 @@
+:root {
+    --color-primary : #1d9dff;
+    --color-secondary : rgb(124, 194, 247);
+    --color-black : black;
+    --color-white : white;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.title_1 {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.title_2 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.title_3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.color-primary {
+    color: var(--color-primary);
+}
+
+.color-secondary {
+    color: var(--color-secondary);
+}
+
+.color-white {
+    color: var(--color-white);
+}
+
+
+.color-black {
+    color: var(--color-black);
+}
+
+.text-bold{
+    font-weight: bold;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.mt-10{
+    margin-top: 10px;
+}
+
+.mt-20{
+    margin-top: 20px;
+}

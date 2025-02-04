@@ -1,0 +1,49 @@
+/* Styles de base pour le groupe d'input */
+.input__group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espacement entre les éléments */
+    margin-bottom: 10px; /* Espacement sous le groupe */
+    position: relative;
+  }
+  
+  /* Style pour le label */
+  .input__label {
+    text-align: left;
+    font-size: 16px;
+    color: black; /* Couleur du texte */
+    font-weight: 600;
+  }
+  
+  /* Style pour l'input */
+  .input__group input {
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #9AC8EB; /* Bordure de l'input */
+    border-radius: 4px; /* Arrondir les coins */
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Effet au focus de l'input */
+  .input__group input:focus {
+    border-color: #9AC8EB; /* Changer la bordure au focus */
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.4); /* Ajouter une ombre */
+  }
+  
+  /* Style pour le message d'erreur */
+  .error {
+    display: none;
+    font-size: 12px;
+    color: #FF4D4D; /* Couleur rouge pour l'erreur */
+    margin-top: 4px;
+    display: flex;
+  }
+  
+  /* Style pour le texte d'erreur */
+  .error p {
+    display: none;
+    margin: 0;
+    font-weight: 500;
+  }
+  

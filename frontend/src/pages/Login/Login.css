@@ -1,0 +1,54 @@
+@import url('../../assets/commons.css');
+
+.login__wrapper{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-around;
+    height: calc(100vh - 40px);
+}
+
+.login__wrapper div{
+    width: 50%;
+}
+
+
+
+.form__container{
+    position: relative;
+    padding: auto 20px;
+}
+
+.form__container form{
+    padding: 20px 50px;
+}
+
+.form__container .step__1,
+.form__container .step__2,
+.form__container .input__group{
+    width: 100%;
+}
+
+.form__container .title_1{
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form__container .form__group{
+    width: 100%;
+}
+
+.form__container .items
+{
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 50px 0;
+}
+
+.items .item{
+    list-style: none;
+}
