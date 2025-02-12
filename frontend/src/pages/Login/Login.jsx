@@ -18,7 +18,7 @@ function Login() {
                         <Input label="Identifiant" name="username" placeholder="Identifiant" type="text" />
                         <Input label="Mot de passe" name="mdp" placeholder="*********" type="password" />
                         <Button className="btn medium full">Connexion</Button>
-                        <p className="mt-20 text-center">Vous n'avez pas de compte ? <a href="" className="color-primary text-bold">Inscrivez-vous</a></p>
+                        <p className="mt-20 text-center">Vous n'avez pas de compte ? <a href="/register" className="color-primary text-bold">Inscrivez-vous</a></p>
                     </form>
                     <ul className="items">
                         <li className="item"><a href="">Politique de confidentialite</a></li>

@@ -1,19 +1,22 @@
-
-import React from 'react'
-import Container from './conpoments/Container/Container'
-import Login from './pages/Login/Login'
-import Register from './pages/Register/Register'
-import Email from './pages/Update/Email'
-import Password from './pages/Update/Password'
-import Verification from './pages/OptVerification/Verification'
+import React from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Email from "./pages/Update/Email";
+import Password from "./pages/Update/Password";
 
 function App() {
 
   return (
     <>
-      <Container>
-          <Verification />
-      </Container>
+      <BrowserRouter>
+        <Routes>
+            <Route index element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/update-password' element={<Email />} />
+            <Route path='/new-password' element={<Password />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
