@@ -4,6 +4,8 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Email from "./pages/Update/Email";
 import Password from "./pages/Update/Password";
+import Form from "./pages/test/form";
+import Verify from './pages/VerifyEmail/Verify';
 
 function App() {
 
@@ -15,6 +17,8 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/update-password' element={<Email />} />
             <Route path='/new-password' element={<Password />} />
+            <Route path='/confirmed-email' element={<Verify />} />
+            <Route path='/test/form' element={<Form />}/>
         </Routes>
       </BrowserRouter>
     </>
