@@ -1,0 +1,30 @@
+.profile-header {
+    position: relative;
+    margin-left: 29px; /* 250px (largeur sidebar) + 20px (marge gauche sidebar) + 20px (espace entre sidebar et header) */
+    margin-top: 1px;   /* Même marge que la sidebar */
+    margin-right: 10px; /* Marge droite pour l'équilibre */
+}
+
+.banner {
+    height: 200px;
+    background: linear-gradient(to right, #e3f2fd, #f8bbd0);
+    border-radius: 12px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin-top: -60px;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+}
+
+.profile-text {
+    margin-bottom: 15px;
+}
