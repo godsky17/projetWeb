@@ -217,6 +217,8 @@ class UserController extends Controller
             $validator = Validator::make($request->all(), [
                 'email' => 'required|email',
                 'password' => 'required|string|min:6',
+            ], [
+                'email.required' => "Email est requis"
             ]);
 
             if ($validator->fails()) {
@@ -228,7 +230,7 @@ class UserController extends Controller
 
         // Essayer de générer un token
         if (!$token = Auth::attempt($credentials)) {
-            return ApiResponse::error("Email ou mot de passe incorrect.", null, 401);
+            return ApiResponse::error("Error", ["email" => "Email ou mot de passe incorrect."], 401);
         }
 
         Auth::user()->isOnLine = true;

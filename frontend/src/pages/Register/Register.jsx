@@ -43,7 +43,6 @@ function Register() {
             setErrors(data.errors);
         }
         localStorage.setItem("token", data.data['verifyToken'])
-        localStorage.setItem("user", JSON.stringify(data.data))
         navigate("/confirmed-email")
     }
     return (
