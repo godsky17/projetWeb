@@ -97,15 +97,16 @@ class UserController extends Controller
                 'identity.picture' => 'nullable|url',
                 'email' => 'required|email|unique:users,email',
                 'username' => 'required|string|unique:users,username',
-                'password' => 'required|min:6',
+                'password' => 'required|min:6|confirmed',
             ], [
                 'identity.fullName.required' => 'Le champ nom complet est obligatoire',
                 'email.required' => 'Le champ email est obligatoire',
                 'email.email' => 'Le champ email doit être une adresse email valide',
                 'email.unique' => 'Cet email est déjà utilisé',
                 'username.required' => 'Le champ nom d\'utilisateur est obligatoire',
+                'username.required' => 'Le champ nom d\'utilisateur est obligatoire',
                 'username.unique' => 'Ce nom d\'utilisateur est déjà utilisé',
-                'password.required' => 'Le champ mot de passe est obligatoire',
+                'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
                 'password.min' => 'Le mot de passe doit contenir au moins 6 caractères',
             ]);
 
@@ -211,23 +212,33 @@ class UserController extends Controller
      */
     public function login(Request $request)
     {
-        // Validation des entrées
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string|min:6',
-        ]);
+        try {
+            // Validation des entrées
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email',
+                'password' => 'required|string|min:6',
+            ], [
+                'email.required' => "Email est requis"
+            ]);
+
+            if ($validator->fails()) {
+                return ApiResponse::validation($validator->errors());
+            }
 
         // Préparer les identifiants pour l'authentification
         $credentials = $request->only('email', 'password');
 
         // Essayer de générer un token
         if (!$token = Auth::attempt($credentials)) {
-            return ApiResponse::error("Email ou mot de passe incorrect.", null, 401);
+            return ApiResponse::error("Error", ["email" => "Email ou mot de passe incorrect."], 401);
         }
 
         Auth::user()->isOnLine = true;
         Auth::user()->save();
         return ApiResponse::success(['token' => $token, "user" => Auth::user()], "Connexion réussie.");
+        } catch (\Exception $e) {
+            return ApiResponse::error("Une erreur s'est produite", $e->getMessage());
+        }
     }
 
 
@@ -353,6 +364,9 @@ class UserController extends Controller
                 'token' => 'required|string',
             ]);
             $user = User::where('verifyToken', $request->token)->first();
+            if(!$user) {
+                return ApiResponse::error('Utilisateur non trouve', $user);
+            }
             $user->verifyToken = Str::random(60);
             $user->save();
             Mail::to($user->email)->send(

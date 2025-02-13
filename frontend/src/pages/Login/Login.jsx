@@ -1,11 +1,44 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 
 import './Login.css'
 import '../../assets/commons.css'
 import Input from "../../conpoments/Input/Input";
 import Button from "../../conpoments/Buttons/Button";
+import { AppContext } from "../../Context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+    const { setToken } = useContext(AppContext)
+    const {setUser} = useContext(AppContext)
+    const navigate = useNavigate()
+    const [errors, setErrors] = useState()
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const form = new FormData(e.target);
+        const email = form.get("email");
+        const password = form.get("password");
+        const response = await fetch("api/login", {
+            method: "POST",
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+
+        const data = await response.json();
+        if (data.errors) {
+            setErrors(data.errors)
+        } else {
+            console.log(data.data.token)
+            localStorage.setItem("token", data.data.token);
+            localStorage.setItem("user", JSON.stringify(data.data.user));
+            setToken(data.data.token);
+            navigate("/test/form");
+        }
+
+    }
+
     return (
         <>
             <div className="login__wrapper">
@@ -14,9 +47,9 @@ function Login() {
                 </div>
                 <div className="col form__container">
                     <p className="title_1 color-primary">Connexion</p>
-                    <form action="">
-                        <Input label="Identifiant" name="username" placeholder="Identifiant" type="text" />
-                        <Input label="Mot de passe" name="mdp" placeholder="*********" type="password" />
+                    <form onSubmit={handleSubmit}>
+                        <Input label="Identifiant" name="email" placeholder="Identifiant" type="email" errors={!Array.isArray(errors) ? errors?.email : errors?.email?.[0]} />
+                        <Input label="Mot de passe" name="password" placeholder="*********" type="password" errors={errors?.password?.[0]} />
                         <Button className="btn medium full">Connexion</Button>
                         <p className="mt-20 text-center">Vous n'avez pas de compte ? <a href="/register" className="color-primary text-bold">Inscrivez-vous</a></p>
                     </form>
