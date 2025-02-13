@@ -1,0 +1,49 @@
+.sidebar {
+    width: 250px;
+    height: calc(100vh - 40px);  /* On réduit légèrement la hauteur pour avoir de l'espace en haut et en bas */
+    position: fixed;
+    left: 20px;  /* Marge depuis le bord gauche */
+    top: 20px;   /* Marge depuis le haut */
+    background-color: #B4D4F4;
+    border-radius: 20px;  /* Maintenant on met le border-radius sur tous les côtés */
+}
+
+.app-title {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.app-title i {
+    color: white;
+}
+
+.sidebar .nav-link {
+    border-radius: 8px;
+    padding: 10px;
+    color: #333;  /* Texte en noir */
+    font-weight: bold;  /* Texte en gras */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar .nav-link i {
+    color: white;
+}
+
+.badge {
+    background-color: white;
+    color: #333;
+    font-weight: normal;
+}
+
+
+  
