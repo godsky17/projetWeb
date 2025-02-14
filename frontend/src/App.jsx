@@ -8,6 +8,8 @@ import Form from "./pages/test/form";
 import Verify from './pages/VerifyEmail/Verify';
 import { AppContext } from './Context/AppContext';
 import ProfilePage from "./pages/Profile/Profile";
+import Message from './pages/Message/Message';
+import RechercheUtilisateur from './pages/Recherche_Utilisateur/Recherche_Utilisateur';
 
 
 function App() {
@@ -15,18 +17,18 @@ function App() {
 
   return (
     <>
-
-      <BrowserRouter>
-        <Routes>
-            <Route index element={user ? <ProfilePage /> : <Login />} />
-            <Route path='/register' element={user ? <ProfilePage /> : <Register />} />
-            <Route path='/update-password' element={user ? <ProfilePage /> : <Email />} />
-            <Route path='/new-password' element={user ? <ProfilePage /> : <Password />} />
-            <Route path='/confirmed-email' element={user ? <ProfilePage /> : <Verify />} />
-            <Route path='/test/form' element={<Form />}/>
-             <Route path='/profile' element={<ProfilePage />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        {/* Définir ProfilePage comme route par défaut */}
+        <Route index element={<RechercheUtilisateur />} />
+        <Route path='/message' element={<Message />} />
+        <Route path='/profil' element={<ProfilePage />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/update-password' element={<Email />} />
+        <Route path='/new-password' element={<Password />} />
+      </Routes>
+    </BrowserRouter>
 
     </>
   )

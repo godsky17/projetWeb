@@ -1,0 +1,29 @@
+.recherche {
+    max-width: 1600px;
+    margin-left: 300px;
+    margin-top: 25px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-bottom: 45px;
+    padding-top: 10px;
+}
+
+.search-bar {
+    padding: 1px;
+    margin-bottom: 40px;
+    margin-top: 20px
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.search-input:focus {
+    border-color: #B4D4F4;
+    outline: none;
+}
+  
