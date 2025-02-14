@@ -5,6 +5,10 @@
     --color-white : white;
 }
 
+.text-body {
+    font-size: 16px;
+}
+
 a{
     color: black;
     text-decoration: none;
