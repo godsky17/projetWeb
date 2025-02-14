@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProfilHeader.css';
 
-const ProfilHeader = () => {
+const ProfilHeader = ({user}) => {
   return (
     <div className="profile-header">
       <div className="banner"></div>
@@ -13,8 +13,8 @@ const ProfilHeader = () => {
           className="profile-pic"
         />
         <div className="profile-text">
-          <h2 className="fw-bold mb-0">Jayden SMITH</h2>
-          <p className="text-muted">@jaydensmith_584</p>
+          <h2 className="fw-bold mb-0">{user.identity['fullName']}</h2>
+          <p className="text-muted">{user.email}</p>
         </div>
       </div>
     </div>

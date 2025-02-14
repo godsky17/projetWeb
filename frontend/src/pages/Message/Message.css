@@ -1,6 +1,6 @@
 /* Message.css */
 .message-page {
-    margin-left: 260px;
+    margin-left: 280px;
     height: 100vh;
     background-color: #f8fafc;
     display: flex;
@@ -9,7 +9,6 @@
 .chat-container {
     width: 380px;
     background: white;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .search-bar {

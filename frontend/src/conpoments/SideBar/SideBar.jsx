@@ -53,7 +53,7 @@ const SideBar = () => {
             </a>
           </div>
           <div className="nav-item mb-2">
-            <a className="nav-link d-flex align-items-center">
+            <a href="/profil" className="nav-link d-flex align-items-center">
               <i className="fas fa-cog me-3"></i>
               Parametres
             </a>

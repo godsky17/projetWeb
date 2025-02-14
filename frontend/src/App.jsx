@@ -10,7 +10,7 @@ import { AppContext } from './Context/AppContext';
 import ProfilePage from "./pages/Profile/Profile";
 import Message from './pages/Message/Message';
 import RechercheUtilisateur from './pages/Recherche_Utilisateur/Recherche_Utilisateur';
-
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const user = JSON.parse(localStorage.getItem('user'))
@@ -20,13 +20,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Définir ProfilePage comme route par défaut */}
-        <Route index element={<RechercheUtilisateur />} />
-        <Route path='/message' element={<Message />} />
-        <Route path='/profil' element={<ProfilePage />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/update-password' element={<Email />} />
-        <Route path='/new-password' element={<Password />} />
+        <Route index element={user ? <RechercheUtilisateur /> : <Login />} />
+        <Route path='/message' element={user ? <Message /> : <Login />} />
+        <Route path='/profil' element={ user ? <ProfilePage /> : <Login />} />
+        <Route path='/login' element={ user ? <Message /> : <Login />} />
+        <Route path='/register' element={ user ? <Register /> : <Login />} />
+        <Route path='/update-password' element={ user ? <Email /> : <Login />} />
+        <Route path='/new-password' element={ user ? <Password /> : <Login />} />
       </Routes>
     </BrowserRouter>
 
