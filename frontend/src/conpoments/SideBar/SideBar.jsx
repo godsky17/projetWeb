@@ -4,7 +4,7 @@ import './SideBar.css';
 const SideBar = () => {
   return (
     <div className="sidebar">
-      <div className="p-3">
+      <div className="px-3">
         <div className="app-title">
           <img src="/images/logo.png" width="150px" alt="logo" style={{ filter: "brightness(0) invert(1)" }} />
         </div>

@@ -8,3 +8,21 @@
 .register__wrapper div{
     width: 50%;
 }
+
+.input_group{
+    display: flex;
+    gap: 10px;
+}
+
+.form__container .form{
+    width: 472px;
+    justify-content: space-around;
+    min-height: 401px;
+}
+
+.form .items{
+    bottom: 20px;
+
+}
+
+
