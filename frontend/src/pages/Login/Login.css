@@ -2,53 +2,85 @@
 
 .login__wrapper{
     display: flex;
-    gap: 20px;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
-    height: calc(100vh - 40px);
+    height: 100vh ;
 }
 
-.login__wrapper div{
-    width: 50%;
+.login__wrapper .col{
+    height: 100%;
+    padding: 10px;
+}
+
+.login__wrapper .infos{
+    position: relative;
+}
+
+.login__wrapper .surface{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.surface .text{
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15%;
+}
+
+.surface .text p:last-child{
+    padding: 0 8%;
 }
 
 
+.login__wrapper .infos .infos_bg{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.surface .surface_img{
+    width: 244px;
+    width: 196px;
+}
 
 .form__container{
-    position: relative;
-    padding: auto 20px;
-}
-
-.form__container form{
-    padding: 20px 50px;
-}
-
-.form__container .step__1,
-.form__container .step__2,
-.form__container .input__group{
-    width: 100%;
-}
-
-.form__container .title_1{
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.form__container .form__group{
-    width: 100%;
-}
-
-.form__container .items
-{
-    width: 100%;
-    bottom: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    padding: 0;
-    margin: 50px 0;
+    position: relative;
 }
 
-.items .item{
+.form__container .form{
+    width: 452px;
+    min-height: 401px;
+}
+
+.form .title_2{
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.form .btn{
+    padding: 0;
+}
+
+.form .items{
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    padding: 0 10px;
     list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
 }

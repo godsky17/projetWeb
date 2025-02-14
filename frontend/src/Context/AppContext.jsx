@@ -15,8 +15,6 @@ export default function AppProvider({children}){
         const data = await response.json()
         if (response.ok) {
             setUser(data)
-        }else{
-            alert('helle')
         }
     }
     

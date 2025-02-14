@@ -8,7 +8,7 @@ import { AppContext } from '../../Context/AppContext';
 function Verify() {
   const { token } = useContext(AppContext)
   const [errors, setErrors] =useState({})
-  const user = JSON.parse(localStorage.getItem('user'))
+  const email = localStorage.getItem('email')
 
   async function handleClick() {
     const token = localStorage.getItem('token')
@@ -19,7 +19,6 @@ function Verify() {
     if (data.errors) {
       setErrors(data.errors);
     }
-    console.log(data)
   }
 
   return (
@@ -30,7 +29,7 @@ function Verify() {
       <div className="opt__verification">
         <img className="img" src={img} alt="" />
         <p className="title_2 color-primary">OPT verification</p>
-        <p className='mt-10'>Nous avons envoyer le code de verification a <span className="text-bold">{user.email}</span></p>
+        <p className='mt-10'>Nous avons envoyer le code de verification a <span className="text-bold">{email}</span></p>
 
         <div className="mt-20">
           <Button className="btn medium full" onClick={handleClick}>Renvoyer le code</Button>

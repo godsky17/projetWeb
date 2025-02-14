@@ -11,18 +11,18 @@ import ProfilePage from "./pages/Profile/Profile";
 
 
 function App() {
-  const {user} = useContext(AppContext)
+  const user = JSON.parse(localStorage.getItem('user'))
 
   return (
     <>
 
       <BrowserRouter>
         <Routes>
-            <Route index element={user ? <Form /> : <Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/update-password' element={<Email />} />
-            <Route path='/new-password' element={<Password />} />
-            <Route path='/confirmed-email' element={<Verify />} />
+            <Route index element={user ? <ProfilePage /> : <Login />} />
+            <Route path='/register' element={user ? <ProfilePage /> : <Register />} />
+            <Route path='/update-password' element={user ? <ProfilePage /> : <Email />} />
+            <Route path='/new-password' element={user ? <ProfilePage /> : <Password />} />
+            <Route path='/confirmed-email' element={user ? <ProfilePage /> : <Verify />} />
             <Route path='/test/form' element={<Form />}/>
              <Route path='/profile' element={<ProfilePage />} />
         </Routes>
