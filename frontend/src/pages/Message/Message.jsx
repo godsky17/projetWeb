@@ -1,27 +1,69 @@
-// Message.jsx
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Sidebar from '../../conpoments/SideBar/SideBar';
 import './Message.css';
 
 const Message = () => {
+  const [messages, setMessages] = useState([
+    {
+      id: 1,
+      text: "I am fine and how are you?",
+      time: "Today, 8:34pm",
+      type: "received"
+    },
+    {
+      id: 2,
+      text: "I am doing well, Can we meet tomorrow?",
+      time: "Today, 8:36pm",
+      type: "sent"
+    }
+  ]);
+  const [newMessage, setNewMessage] = useState("");
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    if (newMessage.trim() === "") return;
+
+    const currentTime = new Date().toLocaleTimeString([], { 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    });
+
+    const newMsg = {
+      id: messages.length + 1,
+      text: newMessage,
+      time: `Today, ${currentTime}`,
+      type: "sent"
+    };
+
+    setMessages([...messages, newMsg]);
+    setNewMessage("");
+  };
+
   return (
     <div className="app">
       <Sidebar />
       
       <div className="message-page">
+        {/* Le reste du code jusqu'à chat-messages reste identique */}
         <div className="chat-container">
-          {/* Barre de recherche */}
           <div className="search-bar">
-              <input 
-                type="text" 
-                placeholder="Rechercher..." 
-                className="search-input"
-              />
+            <input 
+              type="text" 
+              placeholder="Rechercher..." 
+              className="search-input"
+            />
           </div>
 
-          {/* Liste des chats */}
           <div className="chat-list">
-            {/* Section Groupe */}
             <div className="section">
               <h2>Groupe</h2>
               {[1, 2, 3].map((item) => (
@@ -39,7 +81,6 @@ const Message = () => {
               ))}
             </div>
 
-            {/* Section Discussions */}
             <div className="section">
               <h2>Discussions</h2>
               {[1, 2, 3, 4].map((item) => (
@@ -59,7 +100,6 @@ const Message = () => {
           </div>
         </div>
 
-        {/* Fenêtre de chat */}
         <div className="chat-window">
           <div className="chat-window-header">
             <div className="user-info">
@@ -77,22 +117,26 @@ const Message = () => {
           </div>
 
           <div className="chat-messages">
-            <div className="message received">
-              I am fine and how are you?
-              <span className="message-time">Today, 8:34pm</span>
-            </div>
-            <div className="message sent">
-              I am doing well, Can we meet tomorrow?
-              <span className="message-time">Today, 8:36pm</span>
-            </div>
+            {messages.map((message) => (
+              <div key={message.id} className={`message ${message.type}`}>
+                {message.text}
+                <span className="message-time">{message.time}</span>
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
           </div>
 
-          <div className="chat-input">
-            <input type="text" placeholder="Tapez un message"/>
-            <button className="send-button">
+          <form onSubmit={handleSendMessage} className="chat-input">
+            <input
+              type="text"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Tapez un message"
+            />
+            <button type="submit" className="send-button">
               <i className="fas fa-paper-plane"></i>
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

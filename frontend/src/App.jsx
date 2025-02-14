@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Définir ProfilePage comme route par défaut */}
-        <Route index element={<RechercheUtilisateur />} />
+        <Route index element={<Message />} />
         <Route path='/message' element={<Message />} />
         <Route path='/profil' element={<ProfilePage />} />
         <Route path='/login' element={<Login />} />

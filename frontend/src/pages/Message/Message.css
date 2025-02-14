@@ -13,7 +13,8 @@
 }
 
 .search-bar {
-    padding: 20px;
+    margin-left: 18px;
+    margin-right: 10px;
 }
 
 .search-input {
@@ -22,6 +23,7 @@
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     font-size: 14px;
+    margin-top: 30px;
 }
 
 .search-input:focus {
@@ -152,6 +154,9 @@
     padding: 20px;
     background-color: #f8fafc;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .message {
@@ -160,6 +165,7 @@
     border-radius: 12px;
     margin-bottom: 15px;
     position: relative;
+    word-wrap: break-word;
 }
 
 .message.received {
