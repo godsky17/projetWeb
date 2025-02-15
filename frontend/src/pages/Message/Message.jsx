@@ -1,27 +1,84 @@
-// Message.jsx
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Sidebar from '../../conpoments/SideBar/SideBar';
 import './Message.css';
 
 const Message = () => {
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
+  const messagesEndRef = useRef(null);
+
+  // Fonction pour récupérer les messages depuis l'API
+  const fetchMessages = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/messages');
+      const data = await response.json();
+      setMessages(data);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des messages :", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMessages();
+  }, []);
+
+  // Fonction pour défiler automatiquement vers le bas
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  // Fonction pour envoyer un nouveau message
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    if (newMessage.trim() === "") return;
+
+    const currentTime = new Date().toLocaleTimeString([], { 
+      hour: '2-digit', 
+      minute: '2-digit' 
+    });
+
+    const newMsg = {
+      id: messages.length + 1,
+      text: newMessage,
+      time: `Aujourd'hui, ${currentTime}`,
+      type: "sent"
+    };
+
+    setMessages([...messages, newMsg]);
+    setNewMessage("");
+
+    // 🔹 Envoyer le message à l'API (optionnel)
+    try {
+      await fetch('http://localhost:5000/messages', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newMsg),
+      });
+    } catch (error) {
+      console.error("Erreur lors de l'envoi du message :", error);
+    }
+  };
+
   return (
     <div className="app">
       <Sidebar />
       
       <div className="message-page">
+        {/* Le reste du code jusqu'à chat-messages reste identique */}
         <div className="chat-container">
-          {/* Barre de recherche */}
           <div className="search-bar">
-              <input 
-                type="text" 
-                placeholder="Rechercher..." 
-                className="search-input"
-              />
+            <input 
+              type="text" 
+              placeholder="Rechercher..." 
+              className="search-input"
+            />
           </div>
 
-          {/* Liste des chats */}
           <div className="chat-list">
-            {/* Section Groupe */}
             <div className="section">
               <h2>Groupe</h2>
               {[1, 2, 3].map((item) => (
@@ -39,7 +96,6 @@ const Message = () => {
               ))}
             </div>
 
-            {/* Section Discussions */}
             <div className="section">
               <h2>Discussions</h2>
               {[1, 2, 3, 4].map((item) => (
@@ -59,7 +115,6 @@ const Message = () => {
           </div>
         </div>
 
-        {/* Fenêtre de chat */}
         <div className="chat-window">
           <div className="chat-window-header">
             <div className="user-info">
@@ -77,23 +132,28 @@ const Message = () => {
           </div>
 
           <div className="chat-messages">
-            <div className="message received">
-              I am fine and how are you?
-              <span className="message-time">Today, 8:34pm</span>
-            </div>
-            <div className="message sent">
-              I am doing well, Can we meet tomorrow?
-              <span className="message-time">Today, 8:36pm</span>
-            </div>
+            {messages.map((message) => (
+              <div key={message.id} className={`message ${message.type}`}>
+                {message.text}
+                <span className="message-time">{message.time}</span>
+              </div>
+            ))}
+            <div ref={messagesEndRef} />
           </div>
 
-          <div className="chat-input">
-            <input type="text" placeholder="Tapez un message"/>
-            <button className="send-button">
+          <form onSubmit={handleSendMessage} className="chat-input">
+            <input
+              type="text"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Tapez un message"
+            />
+            <button type="submit" className="send-button">
               <i className="fas fa-paper-plane"></i>
             </button>
-          </div>
+          </form>
         </div>
+        
       </div>
     </div>
   );

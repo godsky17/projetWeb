@@ -35,7 +35,7 @@ function Login() {
             localStorage.setItem("token", data.data.token);
             localStorage.setItem("user", JSON.stringify(data.data.user));
             setToken(data.data.token);
-            navigate("/");
+            navigate("/list-user");
         }
 
     }

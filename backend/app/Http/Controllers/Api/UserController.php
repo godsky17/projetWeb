@@ -506,4 +506,15 @@ class UserController extends Controller
             return ApiResponse::error($e->getMessage());
         }
     }
+
+    public function getAllUser()
+    {
+        try {
+            return ApiResponse::success([
+                'users' => User::all(),
+            ]);
+        } catch (\Throwable $e) {
+            return ApiResponse::error($e->getMessage());
+        }
+    }
 }

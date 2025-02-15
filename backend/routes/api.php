@@ -21,6 +21,7 @@ Route::post('login', [UserController::class, 'login'])->name('login');
 Route::middleware(['auth:api'])->group(function () {
 
     Route::get('/user', [UserController::class, 'me'])->middleware('auth')->middleware('auth');
+    Route::get('/users', [UserController::class, 'getAllUser'])->middleware('auth');
     Route::patch('/user/update-profile', [UserController::class, 'updateUserProfileInfos'])->middleware('auth');
     Route::patch('/user/update-password', [UserController::class, 'updateUserPassword'])->middleware('auth');
     Route::post('/user/update-profile-picture/{user}', [UserController::class, 'updateProfilePicture'])->middleware('auth');

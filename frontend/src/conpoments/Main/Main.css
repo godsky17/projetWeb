@@ -1,0 +1,12 @@
+@import url("../../assets/commons.css");
+
+.main{
+    min-height: 100vh;
+    margin: 20px 20px 20px 290px;
+    display: flex;
+    justify-content: center;
+}
+
+.main_container{
+    width: 927px;
+}

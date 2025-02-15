@@ -17,7 +17,7 @@ const SideBar = () => {
             </a>
           </div>
           <div className="nav-item mb-2">
-            <a className="nav-link d-flex align-items-center justify-content-between">
+            <a  href="/liste-discution" className="nav-link d-flex align-items-center justify-content-between">
               <div>
                 <i className="far fa-comments me-3"></i>
                 Discussions
@@ -26,7 +26,7 @@ const SideBar = () => {
             </a>
           </div>
           <div className="nav-item mb-2">
-            <a className="nav-link d-flex align-items-center">
+            <a href='/list-user' className="nav-link d-flex align-items-center">
               <i className="far fa-address-book me-3"></i>
               Contacts
             </a>
@@ -44,7 +44,7 @@ const SideBar = () => {
             </a>
           </div>
           <div className="nav-item mb-2">
-            <a className="nav-link d-flex align-items-center justify-content-between">
+            <a href='/invitation' className="nav-link d-flex align-items-center justify-content-between">
               <div>
                 <i className="far fa-envelope me-3"></i>
                 Invitations
